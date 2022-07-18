@@ -52,8 +52,13 @@ const GCPContextProvider = ({children}) => {
 		setEditItemName(name);
 	};
 	
-	const updateEntry = item => {
-		setListObj(prevState => ({ ...prevState, [item.name]: item }));
+		// user may change the name
+	const updateEntry = (previousName, item) => {
+		setListObj(prevState => {
+			const { [previousName]: omit, ...list } = prevState;
+			list[item.name] = item;
+			return list;
+		})
 	};
 	
 	const getEntryByName = name => listObj[name];

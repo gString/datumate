@@ -24,7 +24,10 @@ const EditItem = () => {
 	}
 	
 	const handleCancelClicked = () => editEntry("");
-	const handleSaveClicked = () => updateEntry(edit);
+	const handleSaveClicked = () => {
+		updateEntry (item.name, edit);
+		editEntry("");
+	};
 	
 	return (
 		<Fragment>
